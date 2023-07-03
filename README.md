@@ -38,4 +38,4 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-Note that both `def update_graph()` and `def update_graph(value)` will work. The only limitation is that the number of parameters is still should be exact.
+Note that both `def update_graph()` and `def update_graph(value)` will work. The only limitation is that if you decide to specify parameters, you still need to use the exact number of parameters.
