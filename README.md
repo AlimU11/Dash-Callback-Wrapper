@@ -2,7 +2,7 @@
 
 Reference callback parameters in property chaining style and simplify callback function definition.
 
-For example, to reference the `value` property of `dropdown-selection` component, you need to use `callback_manager.dropdown_selection.value` instead of `dash.callback_context.inputs['dropdown-selection.value']` or parameter defined in callback function.
+For example, to reference the `value` property of component with `dropdown-selection` id, you can use `callback_manager.dropdown_selection.value` instead of `dash.callback_context.inputs['dropdown-selection.value']` or parameter defined in callback function.
 
 In addition, you can omit specifying callback function parameters at all.
 
@@ -18,6 +18,7 @@ from dcw import callback_manager as cm
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/gapminder_unfiltered.csv')
 
+# you can use app = Dash(__name__) as well
 app = DCWDash(__name__)
 
 app.layout = html.Div([
@@ -26,6 +27,7 @@ app.layout = html.Div([
     dcc.Graph(id='graph-content')
 ])
 
+# you can use @app.callback, but only if app is instance of DCWDash
 @callback(
     Output('graph-content', 'figure'),
     Input('dropdown-selection', 'value')
