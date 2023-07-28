@@ -8,8 +8,11 @@ class PropertyClass:
         self.id = name
 
     def __getattr__(self, name):
-        attr = self.id + "." + name
-        return dash.ctx.inputs.get(attr, dash.ctx.inputs.get(attr.replace("_", "-")))
+        attr = self.id + '.' + name
+        return dash.ctx.inputs.get(
+            attr,
+            dash.ctx.inputs.get(attr.replace('_', '-')),
+        ) or dash.ctx.states.get(attr, dash.ctx.states.get(attr.replace('_', '-')))
 
 
 class DynamicStaticAttrMeta(type):
